@@ -9,9 +9,9 @@ from pathlib import Path
 def download_video_to_buffer(url):
     buffer = BytesIO()
     youtube_video = YouTube(str(url))
-    audio = youtube_video.streams.get_highest_resolution()
-    default_filename = audio.default_filename
-    audio.stream_to_buffer(buffer)
+    video = youtube_video.streams.get_highest_resolution()
+    default_filename = video.default_filename
+    video.stream_to_buffer(buffer)
     return default_filename, buffer
 
 
