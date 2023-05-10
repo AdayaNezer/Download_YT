@@ -1,5 +1,6 @@
 import streamlit as st
 from pytube import YouTube
+import os
 
 VIDEO_SAVE_DIRECTORY = "./videos"
 AUDIO_SAVE_DIRECTORY = "./audio"
@@ -10,7 +11,7 @@ def download(video_url):
     video = video.streams.get_highest_resolution()
 
     try:
-        video.download('~/Downloads')
+        video.download(os.path.expanduser("~/Downloads"))
     except:
         print("Failed to download video")
 
@@ -22,7 +23,7 @@ def download_audio(video_url):
     audio = video.streams.filter(only_audio=True, file_extension='mp4').first()
 
     try:
-        audio.download('~/Downloads')
+        audio.download(os.path.expanduser("~/Downloads"))
     except:
         print("Failed to download audio")
 
@@ -49,8 +50,8 @@ st.markdown('<h3 style=" color: #e31072 ">To download please enter a link</h3>',
 URL = st.text_input('')
 st.markdown('<h3 style=" color: #e31072 ">Please select the file type</h3>',
             unsafe_allow_html=True)
-type = st.radio('OK',
-                ('Video', 'Audio'), label_visibility="visible")
+type = st.radio('',
+                ('Video', 'Audio'))
 
 if st.button('Download now'):
     if type == 'Video':
