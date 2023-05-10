@@ -5,6 +5,7 @@ from io import BytesIO
 from pathlib import Path
 
 
+@st.cache_data(show_spinner=False, persist=True)
 def download_video_to_buffer(url):
     buffer = BytesIO()
     youtube_video = YouTube(str(url))
