@@ -19,11 +19,11 @@ st.markdown(
 st.markdown('<h1 style="color: #e31072 ">Download videos and songs from YouTube</h1>',
             unsafe_allow_html=True)
 
-st.markdown('<h3 style=" color: #e31072 ">To download please enter a link</h3>',
+st.markdown('<h3>To download please enter a link</h3>',
             unsafe_allow_html=True)
 url = st.text_input('')
 
-st.markdown('<h3 style=" color: #e31072 ">Please select the file type</h3>',
+st.markdown('<h3  ">Please select the file type</h3>',
             unsafe_allow_html=True)
 type = st.radio('',
                 ('Video', 'Audio'))
