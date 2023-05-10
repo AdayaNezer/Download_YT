@@ -4,7 +4,6 @@ import streamlit as st
 from pytube import YouTube
 
 
-@st.cache_data(show_spinner=False)
 def download_audio_to_buffer(url):
     buffer = BytesIO()
     youtube_video = YouTube(str(url))
