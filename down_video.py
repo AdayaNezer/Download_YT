@@ -6,9 +6,9 @@ from pathlib import Path
 
 
 @st.cache_data(show_spinner=False)
-def download_audio_to_buffer(url):
+def download_video_to_buffer(url):
     buffer = BytesIO()
-    youtube_video = YouTube(url)
+    youtube_video = YouTube(str(url))
     audio = youtube_video.streams.get_highest_resolution()
     default_filename = audio.default_filename
     audio.stream_to_buffer(buffer)
@@ -18,7 +18,7 @@ def download_audio_to_buffer(url):
 def download_video(url):
     if url != '':
         with st.spinner("Downloading video Stream from Youtube..."):
-            default_filename, buffer = download_audio_to_buffer(url)
+            default_filename, buffer = download_video_to_buffer(url)
         st.subheader("Title")
         st.write(default_filename)
         title_vid = Path(default_filename).with_suffix(".mp4").name
