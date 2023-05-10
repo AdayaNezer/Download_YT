@@ -11,6 +11,7 @@ def download(video_url):
     video = video.streams.get_highest_resolution()
 
     try:
+        st.write(os.path.expanduser("~/Downloads"))
         video.download(os.path.expanduser("~/Downloads"))
     except:
         print("Failed to download video")
@@ -56,7 +57,7 @@ type = st.radio('',
 if st.button('Download now'):
     if type == 'Video':
         download(URL)
-        st.markdown('<h3 color: #e31072 "> Downloaded successfully</h3>',
+        st.markdown('<h3 color: " #e31072 "> Downloaded successfully</h3>',
                     unsafe_allow_html=True)
     else:
         download_audio(URL)
