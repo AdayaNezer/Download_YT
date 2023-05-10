@@ -49,8 +49,8 @@ st.markdown('<h3 style=" color: #e31072 ">To download please enter a link</h3>',
 URL = st.text_input('')
 st.markdown('<h3 style=" color: #e31072 ">Please select the file type</h3>',
             unsafe_allow_html=True)
-type = st.radio('',
-                ('Video', 'Audio'))
+type = st.radio('OK',
+                ('Video', 'Audio'), label_visibility="visible")
 
 if st.button('Download now'):
     if type == 'Video':
