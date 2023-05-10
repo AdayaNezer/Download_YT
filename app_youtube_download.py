@@ -1,43 +1,50 @@
 import streamlit as st
 from pytube import YouTube
-import os
+import re
+import tempfile
 
 VIDEO_SAVE_DIRECTORY = "./videos"
 AUDIO_SAVE_DIRECTORY = "./audio"
 
 
-# def download(video_url):
-#     video = YouTube(video_url)
-#     st.write("Title of Video: " + str(video.title))
-#     st.write("Number of Views: " + str(video.views))
-#     video = video.streams.get_highest_resolution()
+def download_audio(url):
+    global title_vid
 
-#     try:
-#         # st.download_button(
-#         #     label="Download data",
-#         #     data=video.download(),
-#         #     file_name=f'vvv.mp4',
-#         # )
-#         video.download()
-#     except:
-#         print("Failed to download video")
+    youtube_video = YouTube(url)
+    title_vid = youtube_video.title
 
-#     print("video was downloaded successfully")
+    with tempfile.NamedTemporaryFile(delete=True) as temp:
+        file_path = temp.name + ".mp3"
+        audio = youtube_video.streams.get_audio_only()
+        audio.download(file_path)
+        temp.close()
+
+    return file_path
 
 
-# def download_audio(video_url):
-#     video = YouTube(video_url)
-#     st.write("Title of Video: " + str(video.title))
-#     st.write("Number of Views: " + str(video.views))
-#     audio = video.streams.filter(only_audio=True, file_extension='mp4').first()
-
-#     try:
-#         video.streams.get_audio_only().download()
-#         audio.download(os.path.expanduser("~/Downloads"))
-#     except:
-#         print("Failed to download audio")
-
-#     print("audio was downloaded successfully")
+def get_info(url):
+    yt = YouTube(url)
+    streams = yt.streams.filter(progressive=True, type='video')
+    details = {}
+    details["image"] = yt.thumbnail_url
+    details["streams"] = streams
+    details["title"] = yt.title
+    details["length"] = yt.length
+    itag, resolutions, vformat, frate = ([] for i in range(4))
+    for i in streams:
+        res = re.search(r'(\d+)p', str(i))
+        typ = re.search(r'video/(\w+)', str(i))
+        fps = re.search(r'(\d+)fps', str(i))
+        tag = re.search(r'(\d+)', str(i))
+        itag.append(str(i)[tag.start():tag.end()])
+        resolutions.append(str(i)[res.start():res.end()])
+        vformat.append(str(i)[typ.start():typ.end()])
+        frate.append(str(i)[fps.start():fps.end()])
+    details["resolutions"] = resolutions
+    details["itag"] = itag
+    details["fps"] = frate
+    details["format"] = vformat
+    return details
 
 
 st.markdown(
@@ -65,18 +72,45 @@ type = st.radio('',
                 ('Video', 'Audio'))
 if url != '':
     video = YouTube(url)
-    st.markdown(
-        f'<h3 style=" color: #e31072 ">Title of Video:</h3> <h5> { str(video.title)} </h5>', unsafe_allow_html=True)
-    st.markdown(
-        f'<h3 style=" color: #e31072 ">Number of Views:</h3> <h5>  { str(video.views)}</h5>', unsafe_allow_html=True)
-    st.video(url)
-    if st.button('Download now'):
-        if type == 'Video':
-            video.streams.get_highest_resolution().download()
+    v_info = get_info(url)
+    col1, col2 = st.columns([1, 1.5], gap="small")
+    with st.container():
+        with col1:
+            st.image(v_info["image"])
+        with col2:
+            st.subheader("Video Details ⚙️")
+            res_inp = st.selectbox(
+                '__Select Resolution__', v_info["resolutions"])
+            id = v_info["resolutions"].index(res_inp)
+            st.write(f"__Title:__ {v_info['title']}")
+            st.write(f"__Length:__ {v_info['length']} sec")
+            st.write(f"__Resolution:__ {v_info['resolutions'][id]}")
+            st.write(f"__Frame Rate:__ {v_info['fps'][id]}")
+            st.write(f"__Format:__ {v_info['format'][id]}")
+            file_name = st.text_input(
+                '__Save as 🎯__', placeholder=v_info['title'])
+            if file_name:
+                if file_name != v_info['title']:
+                    file_name
+            else:
+                file_name = v_info['title']
 
-        else:
-            video.streams.get_audio_only().download()
-    print("video was downloaded successfully")
+            if type == 'Video':
+                file_name += ".mp4"
+            else:
+                file_name += ".mp3"
 
-    st.markdown('<h3 style= color: " #e31072 "> Downloaded successfully</h3>',
-                unsafe_allow_html=True)
+    button_v = st.button('view now')
+    if button_v:
+        st.video(url)
+
+    button = st.button('Download now')
+    if button:
+        with st.spinner('Downloading...'):
+            try:
+                ds = v_info["streams"].get_by_itag(v_info['itag'][id])
+                ds.download(filename=file_name, output_path="downloads/")
+                st.success('Download Complete', icon="✅")
+                st.balloons()
+            except:
+                st.error('Error: Save with a different name!', icon="🚨")
