@@ -28,9 +28,9 @@ def about():
                 unsafe_allow_html=True)
     st.markdown('''<h1 style="color: #f08080 ">Welcome to my app</h1>''',
                 unsafe_allow_html=True)
-    st.markdown('''<h3 style="color: #f08080 ">Here you can to download videos and songs from YouTube</h3>''',
+    st.markdown('''<h3>Here you can to download videos and songs from YouTube</h3>''',
                 unsafe_allow_html=True)
-    st.markdown('''<h3 style="color: #f08080 ">You can find the code in my GitHub : https://github.com/AdayaNezer </h3>''',
+    st.markdown('''<h3>You can find the code in my GitHub : https://github.com/AdayaNezer </h3>''',
                 unsafe_allow_html=True)
-    st.markdown('''<h3 style="color: #f08080 ">I hope you enjoy!!!</h3>''',
+    st.markdown('''<h3>I hope you enjoy!!!</h3>''',
                 unsafe_allow_html=True)
