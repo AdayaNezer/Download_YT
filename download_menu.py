@@ -34,3 +34,4 @@ def about():
                 unsafe_allow_html=True)
     st.markdown('''<h3>I hope you enjoy!!!</h3>''',
                 unsafe_allow_html=True)
+    st.snow()
