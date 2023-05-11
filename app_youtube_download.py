@@ -4,6 +4,10 @@ from down_audio import download_audio
 from down_video import download_video
 
 
+st.set_page_config(
+    page_title="Download from YouTube",
+    page_icon="https://www.svgrepo.com/show/421043/blog-premiere-public.svg",)
+
 st.markdown(
     f"""
          <style>
@@ -15,6 +19,7 @@ st.markdown(
          """,
     unsafe_allow_html=True
 )
+
 
 st.markdown('<h1 style="color: #e31072 ">Download videos and songs from YouTube</h1>',
             unsafe_allow_html=True)
