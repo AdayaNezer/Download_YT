@@ -30,7 +30,7 @@ def about():
                 unsafe_allow_html=True)
     st.markdown('''<h3>Here you can to download videos and songs from YouTube</h3>''',
                 unsafe_allow_html=True)
-    st.markdown('''<h3>You can find the code in my GitHub : https://github.com/AdayaNezer </h3>''',
+    st.markdown('<h3> You can find the code in my GitHub : https://github.com/AdayaNezer/Download_YT</h3> ',
                 unsafe_allow_html=True)
     st.markdown('''<h3>I hope you enjoy!!!</h3>''',
                 unsafe_allow_html=True)
