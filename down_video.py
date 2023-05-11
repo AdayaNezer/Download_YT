@@ -23,7 +23,7 @@ def download_video(url):
         st.write(default_filename)
         title_vid = Path(default_filename).with_suffix(".mp4").name
         st.subheader("view video")
-        st.video(url)
+        st.video(buffer, format='video/mpeg')
         st.subheader("Download video File")
         with st.spinner('Downloading...'):
             button = st.download_button(
