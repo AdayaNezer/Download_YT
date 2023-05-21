@@ -12,7 +12,7 @@ def start():
                 unsafe_allow_html=True)
     url = st.text_input('')
 
-    st.markdown('<h3  ">Please select the file type</h3>',
+    st.markdown('<h3>Please select the file type</h3>',
                 unsafe_allow_html=True)
     type = st.radio('',
                     ('Video', 'Audio'))
@@ -26,12 +26,5 @@ def start():
 def about():
     st.markdown('''<h1 style="color: #f08080 ">Hi</h1>''',
                 unsafe_allow_html=True)
-    st.markdown('''<h1 style="color: #f08080 ">Welcome to my app</h1>''',
-                unsafe_allow_html=True)
-    st.markdown('''<h3>Here you can to download videos and songs from YouTube</h3>''',
-                unsafe_allow_html=True)
-    st.markdown('<h3> You can find the code in my GitHub : https://github.com/AdayaNezer/Download_YT</h3> ',
-                unsafe_allow_html=True)
-    st.markdown('''<h3>I hope you enjoy!!!</h3>''',
-                unsafe_allow_html=True)
+
     st.snow()
