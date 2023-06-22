@@ -9,12 +9,12 @@ def start():
 
     st.markdown('<h3>To download please enter a link</h3>',
                 unsafe_allow_html=True)
-    url = st.text_input('')
+    url = st.text_input('please here', label_visibility="hidden")
 
     st.markdown('<h3>Please select the file type</h3>',
                 unsafe_allow_html=True)
-    type = st.radio('---Here---',
-                    ('Video', 'Audio'))
+    type = st.radio('please here',
+                    ('Video', 'Audio'), label_visibility="hidden")
 
     if type == 'Video':
         download_video(url)
