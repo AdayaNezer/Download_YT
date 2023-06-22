@@ -1,5 +1,4 @@
 import streamlit as st
-from pytube import YouTube
 from down_audio import download_audio
 from down_video import download_video
 
@@ -14,7 +13,7 @@ def start():
 
     st.markdown('<h3>Please select the file type</h3>',
                 unsafe_allow_html=True)
-    type = st.radio('',
+    type = st.radio('---Here---',
                     ('Video', 'Audio'))
 
     if type == 'Video':
@@ -26,5 +25,4 @@ def start():
 def about():
     st.markdown('''<h1 style="color: #f08080 ">Hi</h1>''',
                 unsafe_allow_html=True)
-
     st.snow()
