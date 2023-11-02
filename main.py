@@ -1,10 +1,10 @@
 import download_menu
 import streamlit as st
 
-st.set_page_config(
-    page_title="Download from YouTube",
-    page_icon="https://www.svgrepo.com/show/421043/blog-premiere-public.svg",
-)
+# st.set_page_config(
+#     page_title="Download from YouTube",
+#     page_icon="https://www.svgrepo.com/show/421043/blog-premiere-public.svg",
+# )
 
 from navbar import get_current_route, inject_custom_css, navbar_component
 
