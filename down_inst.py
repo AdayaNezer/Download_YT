@@ -1,5 +1,5 @@
 import streamlit as st
-import instaloader
+# import instaloader
 from io import BytesIO
 from pathlib import Path
 
