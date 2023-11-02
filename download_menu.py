@@ -24,9 +24,10 @@ def start():
 
 
 def about():
-    st.markdown('<h1 style="color: #f08080 ">Download videos and songs from Instagram</h1>',
+    True
+    # st.markdown('<h1 style="color: #f08080 ">Download videos and songs from Instagram</h1>',
     
-                unsafe_allow_html=True)
+    #             unsafe_allow_html=True)
 
     # st.markdown('<h3>To download please enter a link</h3>',
     #             unsafe_allow_html=True)
