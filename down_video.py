@@ -1,9 +1,7 @@
 from pytube import YouTube
-
 import streamlit as st
 from io import BytesIO
 from pathlib import Path
-
 
 @st.cache_data(show_spinner=False, persist=True)
 def download_video_to_buffer(url):
@@ -18,7 +16,6 @@ def download_video_to_buffer(url):
         st.error(
             "👉 Please only insert a YouTube link", icon="😡")
         return -1, -1
-
 
 def download_video(url):
     if url != '':

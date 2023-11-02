@@ -4,7 +4,8 @@ from navbar import get_current_route, inject_custom_css, navbar_component
 
 st.set_page_config(
     page_title="Download from YouTube",
-    page_icon="https://www.svgrepo.com/show/421043/blog-premiere-public.svg",)
+    page_icon="https://www.svgrepo.com/show/421043/blog-premiere-public.svg",
+)
 
 st.markdown(
     f"""

@@ -1,6 +1,7 @@
 import streamlit as st
 from down_audio import download_audio
 from down_video import download_video
+from down_inst import download_video_ins
 
 
 def start():
@@ -23,6 +24,11 @@ def start():
 
 
 def about():
-    st.markdown('''<h1 style="color: #f08080 ">Hi</h1>''',
+    st.markdown('<h1 style="color: #f08080 ">Download videos and songs from Instagram</h1>',
+    
                 unsafe_allow_html=True)
-    st.snow()
+
+    # st.markdown('<h3>To download please enter a link</h3>',
+    #             unsafe_allow_html=True)
+    # url = st.text_input('please here', label_visibility="hidden")
+    # download_video(url)

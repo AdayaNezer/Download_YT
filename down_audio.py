@@ -14,8 +14,7 @@ def download_audio_to_buffer(url):
         audio.stream_to_buffer(buffer)
         return default_filename, buffer
     except:
-        st.error(
-            "👉 Please only insert a YouTube link", icon="😡")
+        st.error("👉 Please only insert a YouTube link", icon="😡")
         return -1, -1
 
 
