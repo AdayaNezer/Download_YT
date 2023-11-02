@@ -1,7 +1,7 @@
 import streamlit as st
 from down_audio import download_audio
 from down_video import download_video
-from down_inst import download_video_ins
+# from down_inst import download_video_ins
 
 
 def start():
