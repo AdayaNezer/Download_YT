@@ -31,9 +31,7 @@ def navigation():
     route = get_current_route()
     if route == "home":
         download_menu.start()
-    elif route == "about":
-        download_menu.about()
-    elif route == None:
+    else:
         download_menu.start()
 
 

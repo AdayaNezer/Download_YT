@@ -2,8 +2,7 @@ import streamlit as st
 from streamlit.components.v1 import html
 
 NAVBAR_PATHS = {
-    'YouTube': 'home',
-    'Insagram': 'about',
+    'YouTube': 'home'
 }
 
 SETTINGS = {
